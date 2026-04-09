@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -66,9 +66,9 @@
     combos {
         compatible = "zmk,combos";
 
-        es {
-            bindings = <&kp ESCAPE>;
-            key-positions = <39 38>;
+        def {
+            bindings = <&to 0>;
+            key-positions = <39 40>;
         };
 
         mb1 {
@@ -94,6 +94,16 @@
         mb2 {
             bindings = <&mkp MB2>;
             key-positions = <17 18>;
+        };
+
+        win {
+            bindings = <&to 7>;
+            key-positions = <30 31>;
+        };
+
+        es {
+            bindings = <&kp ESC>;
+            key-positions = <0 1>;
         };
     };
 
