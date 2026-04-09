@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -66,18 +66,13 @@
     combos {
         compatible = "zmk,combos";
 
-        def {
-            bindings = <&to 0>;
-            key-positions = <39 40>;
-        };
-
         mb1 {
             bindings = <&mkp MB1>;
             key-positions = <16 17>;
         };
 
-        lang1 {
-            bindings = <&kp LANG1>;
+        lang2 {
+            bindings = <&kp LANG2>;
             key-positions = <13 12>;
         };
 
@@ -86,19 +81,9 @@
             key-positions = <35 36>;
         };
 
-        lang2 {
-            bindings = <&kp LANG2>;
-            key-positions = <12 11>;
-        };
-
         mb2 {
             bindings = <&mkp MB2>;
             key-positions = <17 18>;
-        };
-
-        win {
-            bindings = <&to 7>;
-            key-positions = <30 31>;
         };
 
         es {
@@ -131,34 +116,38 @@
         };
     };
 
-macros {
-    zenhan: zenhan {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        wait-ms = <40>;
-        tap-ms = <40>;
-        bindings
-            = <&macro_press &kp LEFT_ALT>
-            , <&macro_wait_time 60>
-            , <&macro_press &kp GRAVE>
-            , <&macro_wait_time 60>
-            , <&macro_release &kp GRAVE>
-            , <&macro_wait_time 60>
-            , <&macro_release &kp LEFT_ALT>
-            ;
-        label = "ZENHAN";
+    macros {
+        zenhan: zenhan {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 60>,
+                <&macro_press>,
+                <&kp GRAVE>,
+                <&macro_wait_time 60>,
+                <&macro_release>,
+                <&kp GRAVE>,
+                <&macro_wait_time 60>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
+            label = "ZENHAN";
+        };
     };
-};
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R    &kp T                                                 &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F    &kp G                                                 &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
-&kp Z      &kp X         &kp C         &kp V    &kp B                                                 &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &shft_zen LEFT_SHIFT 0    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
+&kp Q      &kp W         &kp E         &kp R    &kp T                                               &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F    &kp G                                               &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
+&kp Z      &kp X         &kp C         &kp V    &kp B                                               &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &mt LEFT_SHIFT LANG1    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
@@ -168,10 +157,10 @@ macros {
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans              &trans               &kp LS(LG(LC(NUMBER_4)))                                   &trans                &kp RC(LEFT_ARROW)  &kp RC(RIGHT_ARROW)  &trans  &kp RG(RC(RS(NUMBER_4)))
-&trans  &trans  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &trans                                                     &kp RG(R)             &mkp MB1            &mkp MB2             &trans  &kp RG(W)
-&trans  &trans  &trans              &trans               &trans                                                     &kp RG(C)             &kp RG(V)           &kp RA(RG(V))        &trans  &trans
-&trans  &trans  &trans              &trans               &trans                    &trans    &kp RG(RIGHT_BRACKET)  &kp RG(LEFT_BRACKET)                      &trans               &trans  &trans
+&trans  &trans  &trans              &trans               &kp LS(LG(LC(NUMBER_4)))                                   &kp LS(LC(LG(NUMBER_4)))  &kp RC(LEFT_ARROW)  &kp RC(RIGHT_ARROW)  &trans  &kp RG(RC(RS(NUMBER_4)))
+&trans  &trans  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &trans                                                     &kp RG(R)                 &mkp MB1            &mkp MB2             &trans  &kp RG(W)
+&trans  &trans  &trans              &trans               &trans                                                     &kp RG(C)                 &kp RG(V)           &kp RA(RG(V))        &trans  &trans
+&trans  &trans  &trans              &trans               &trans                    &trans    &kp RG(RIGHT_BRACKET)  &kp RG(LEFT_BRACKET)                          &trans               &trans  &trans
             >;
         };
 
@@ -238,17 +227,6 @@ macros {
             >;
 
             sensor-bindings = <&inc_dec_kp RIGHT_ARROW LEFT_ARROW>;
-        };
-
-        windef {
-            bindings = <
-&kp Q      &kp W         &kp E         &kp R    &kp T                                                 &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F    &kp G                                                 &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
-&kp Z      &kp X         &kp C         &kp V    &kp B                                                 &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &shft_zen LEFT_SHIFT 0    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
-            >;
-
-            sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
         };
     };
 };
