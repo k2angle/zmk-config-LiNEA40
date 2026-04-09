@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -121,40 +121,44 @@
 
             tap-ms = <20>;
         };
-    shft_zen: shft_zen {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <2>;
-        flavor = "tap-preferred";
-        tapping-term-ms = <200>;
-        bindings = <&kp>, <&zenhan>;
-    };
-};
 
-macros {
-    zenhan: zenhan {
-        compatible = "zmk,behavior-macro";
-        #binding-cells = <0>;
-        bindings
-            = <&macro_press &kp LEFT_ALT>
-            , <&macro_wait_time 30>
-            , <&macro_tap_time 40>
-            , <&macro_tap &kp GRAVE>
-            , <&macro_wait_time 30>
-            , <&macro_release &kp LEFT_ALT>
-            ;
-        label = "ZENHAN";
+        shft_zen: shft_zen {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&zenhan>;
+        };
     };
-};
+
+    macros {
+        zenhan: zenhan {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_wait_time 30>,
+                <&macro_tap_time 40>,
+                <&macro_tap>,
+                <&kp GRAVE>,
+                <&macro_wait_time 30>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
+            label = "ZENHAN";
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R    &kp T                                                  &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F    &kp G                                                  &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
-&kp Z      &kp X         &kp C         &kp V    &kp B                                                  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &mt LEFT_SHIFT CAPSLOCK    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
+&kp Q      &kp W         &kp E         &kp R    &kp T                                                 &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F    &kp G                                                 &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
+&kp Z      &kp X         &kp C         &kp V    &kp B                                                 &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &shft_zen LEFT_SHIFT 0    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
@@ -238,10 +242,10 @@ macros {
 
         windef {
             bindings = <
-&kp Q      &kp W         &kp E         &kp R    &kp T                                                             &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A      &kp S         &kp D         &kp F    &kp G                                                             &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
-&kp Z      &kp X         &kp C         &kp V    &kp B                                                             &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &shft_zen LEFT_SHIFT 0     &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
+&kp Q      &kp W         &kp E         &kp R    &kp T                                                 &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A      &kp S         &kp D         &kp F    &kp G                                                 &kp H        &kp J  &lt 5 K    &lt 1 L  &kp MINUS
+&kp Z      &kp X         &kp C         &kp V    &kp B                                                 &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT  &kp INS  &lt 2 SPACE  &shft_zen LEFT_SHIFT 0    &kp BACKSPACE  &lt 3 ENTER         &kp F7     &kp F10  &lt 6 DEL
             >;
 
             sensor-bindings = <&mouse_scrl SCRL_DOWN SCRL_UP>;
