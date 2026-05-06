@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -181,10 +181,10 @@
 
         number {
             bindings = <
-&kp BACKSPACE    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_DOT                               &trans   &kp RS(P)           &kp UP_ARROW         &kp RS(N)        &kp DEL
-&kp KP_EQUAL     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS                              &kp F7   &kp LEFT_ARROW      &kp DOWN_ARROW       &kp RIGHT_ARROW  &kp K_MUTE
-&kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                             &kp F10  &kp RA(LEFT_ARROW)  &kp RA(RIGHT_ARROW)  &kp C_VOL_DN     &kp C_VOLUME_UP
-&trans           &trans           &trans           &trans           &kp KP_MULTIPLY  &kp KP_SLASH    &trans  &trans                       &trans               &trans           &trans
+&kp BACKSPACE    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_DOT                               &trans   &kp RS(P)           &kp UP_ARROW         &kp RS(N)          &kp DEL
+&kp KP_EQUAL     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS                              &kp F7   &kp LEFT_ARROW      &kp DOWN_ARROW       &kp RIGHT_ARROW    &kp K_MUTE
+&kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS                             &kp F10  &kp RA(LEFT_ARROW)  &kp RA(RIGHT_ARROW)  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
+&trans           &trans           &trans           &trans           &kp KP_MULTIPLY  &kp KP_SLASH    &trans  &trans                       &trans               &trans             &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
