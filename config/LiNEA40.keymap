@@ -57,7 +57,7 @@
         layers = <SCROLL>;
         input-processors =
             <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
-            //スクロール方向を逆転,,,,,,,,,,,,,,,,,,,,,
+            //スクロール方向を逆転,,,,,,,,,,,,,,,,,,,,,,
             <&zip_xy_to_scroll_mapper>;
     };
 };
@@ -160,7 +160,7 @@
 
         //1
 
-        MOUSE {
+        mouse {
             bindings = <
 &trans  &trans  &trans              &trans               &trans                                   &trans                &kp RC(LEFT_ARROW)  &kp RC(RIGHT_ARROW)  &trans  &trans
 &trans  &trans  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &trans                                   &kp RG(R)             &mkp MB1            &mkp MB2             &trans  &kp RG(W)
@@ -171,12 +171,12 @@
 
         //2
 
-        layer1 {
+        numsym {
             bindings = <
-&kp EXCLAMATION  &kp AT_SIGN    &kp HASH  &kp DLLR  &kp PRCNT                    &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES
-&kp CARET        &kp AMPERSAND  &trans    &trans    &trans                       &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp SEMI          &kp COLON
-&trans           &trans         &trans    &trans    &trans                       &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE         &kp GRAVE
-&trans           &trans         &trans    &trans    &trans     &trans    &trans  &trans                        &trans                 &trans            &trans
+&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5                         &kp NUMBER_6  &kp N7                &kp N8                 &kp N9          &kp N0
+&kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT                    &trans        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMI        &kp COLON
+&kp CARET     &kp AMPS      &kp ASTRK     &trans        &trans                         &trans        &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp LEFT_BRACE  &kp RIGHT_BRACE
+&trans        &trans        &trans        &trans        &trans       &trans    &trans  &trans                              &trans                 &kp TILDE       &kp GRAVE
             >;
 
             sensor-bindings = <&re_kp C_VOLUME_DOWN C_VOLUME_UP>;
